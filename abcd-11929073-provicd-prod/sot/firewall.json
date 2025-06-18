@@ -1,0 +1,151 @@
+{
+	"firewall_rules": [
+		{
+			"action": "ALLOW",
+			"description": "Allow VM inbound connection from laptop",
+			"direction": "INGRESS",
+			"priority": 500,
+			"remote_id": "gcp46050z1",
+			"rules": [
+				{
+					"ports": [
+						"3268",
+						"3269",
+						"7674-7677",
+						"8000-9999",
+						"61616"
+					],
+					"protocol": "TCP"
+				}
+			],
+			"source_ranges": [
+				"10.182.0.0/16",
+				"10.185.0.0/16",
+				"10.188.0.0/16",
+				"10.194.0.0/16",
+				"10.196.0.0/16",
+				"10.43.0.0/16",
+				"10.48.0.0/16",
+				"128.174.0.0/16",
+				"128.173.0.0/16",
+				"130.90.0.0/16",
+				"136.113.0.0/16",
+				"136.78.0.0/16"
+			],
+			"target_id": "gcp46050z1",
+			"target_network_name": "abcd-6320774-vpchost-eu-prod-cinternal-vpc1",
+			"target_service_account": "provenir@abcd-11929073-provicd-prod.iam.gserviceaccount.com",
+			"ticket_ref": "GCPOPS-46050+1"
+		},
+		{
+			"action": "ALLOW",
+			"description": "Allow inbound with GCP",
+			"direction": "INGRESS",
+			"priority": 500,
+			"remote_id": "gcp46050z2",
+			"rules": [
+				{
+					"ports": [
+						"6000-65535"
+					],
+					"protocol": "TCP"
+				}
+			],
+			"source_ranges": [
+				"10.100.0.0/16"
+			],
+			"target_id": "gcp46050z2",
+			"target_network_name": "abcd-6320774-vpchost-eu-prod-cinternal-vpc1",
+			"target_service_account": "provenir@abcd-11929073-provicd-prod.iam.gserviceaccount.com",
+			"ticket_ref": "GCPOPS-46050+2"
+		},
+		{
+			"action": "ALLOW",
+			"description": "Allow outbound within GCP",
+			"destination_ranges": [
+				"10.100.0.0/16"
+			],
+			"direction": "EGRESS",
+			"remote_id": "gcp46050z3",
+			"rules": [
+				{
+					"ports": [
+						"6000-65535"
+					],
+					"protocol": "TCP"
+				}
+			],
+			"target_id": "gcp46050z3",
+			"target_network_name": "abcd-6320774-vpchost-eu-prod-cinternal-vpc1",
+			"target_service_account": "provenir@abcd-11929073-provicd-prod.iam.gserviceaccount.com",
+			"ticket_ref": "GCPOPS-46050+3"
+		},
+		{
+			"action": "ALLOW",
+			"description": "Allow inbound from on-prem server",
+			"direction": "INGRESS",
+			"priority": 500,
+			"remote_id": "gcp46050z4",
+			"rules": [
+				{
+					"ports": [
+						"6000-65535"
+					],
+					"protocol": "TCP"
+				}
+			],
+			"source_ranges": [
+				"10.182.0.0/16",
+				"10.185.0.0/16",
+				"10.188.0.0/16",
+				"10.194.0.0/16",
+				"10.196.0.0/16",
+				"10.43.0.0/16",
+				"10.48.0.0/16",
+				"128.174.0.0/16",
+				"128.173.0.0/16",
+				"130.90.0.0/16",
+				"136.113.0.0/16",
+				"136.78.0.0/16"
+			],
+			"target_id": "gcp46050z4",
+			"target_network_name": "abcd-6320774-vpchost-eu-prod-cinternal-vpc1",
+			"target_service_account": "provenir@abcd-11929073-provicd-prod.iam.gserviceaccount.com",
+			"ticket_ref": "GCPOPS-46050+4"
+		},
+		{
+			"action": "ALLOW",
+			"description": "Allow outbound to on-prem server",
+			"direction": "EGRESS",
+			"priority": 500,
+			"remote_id": "gcp46050z5",
+			"rules": [
+				{
+					"ports": [
+						"6000-65535"
+					],
+					"protocol": "TCP"
+				}
+			],
+			"destination_ranges": [
+				"10.182.0.0/16",
+				"10.185.0.0/16",
+				"10.188.0.0/16",
+				"10.194.0.0/16",
+				"10.196.0.0/16",
+				"10.43.0.0/16",
+				"10.48.0.0/16",
+				"128.174.0.0/16",
+				"128.173.0.0/16",
+				"130.90.0.0/16",
+				"136.113.0.0/16",
+				"136.78.0.0/16"
+			],
+			"target_id": "gcp46050z5",
+			"target_network_name": "abcd-6320774-vpchost-eu-prod-cinternal-vpc1",
+			"target_service_account": "provenir@abcd-11929073-provicd-prod.iam.gserviceaccount.com",
+			"ticket_ref": "GCPOPS-46050+5"
+		}
+	],
+	"firewall_rules_version": 2
+}

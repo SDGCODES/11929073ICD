@@ -1,0 +1,15 @@
+[Unit]
+Description=cloud dbproxy
+After=network.target syslog.target abcd-gcp-env-setup.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=always
+RestartSec=1
+startLimitInterval=30
+ExecStart=/opt/dbproxy/start.sh
+
+[Install]
+WantedBy=multi-user.target
