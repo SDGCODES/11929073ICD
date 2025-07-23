@@ -1,0 +1,19 @@
+[Unit]
+Description=cloud dbproxy
+After=network.target syslog.target abcd-gcp-env-setup.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=always
+RestartSec=1
+startLimitInterval=30
+ExecStart=/user/bin/java Xms2048m -Xmx2048m  -jar /opt/provth-icd/backend/harness.jar >/dev/null 2>&1 &
+
+ExecStart=/user/bin/java Xms2048m -Xmx2048m  -jar /opt/provth-icd/dashboard/dashboard.jar >/dev/null 2>&1 &
+
+ExecStart=/opt/provth-icd/frontend/apache-tomcat-9.0.31/bin/startup.sh >/dev/null 2>&1 &
+
+[Install]
+WantedBy=multi-user.target

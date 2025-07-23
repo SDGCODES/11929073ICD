@@ -1,0 +1,17 @@
+[Unit]
+Description=internal-gateway
+After=network.target syslog.target abcd-gcp-env-setup.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=always
+RestartSec=1
+startLimitInterval=30
+ExecStart=/user/bin/java -XX:MaxMetaspaceSize=128m -Xms2048m -Xmx2048m -Xmn256m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC -jar -Dspring.profiles.active=dev /opt/provenir70/script/internal-gateway/internal-gateway-0.0.1.jar- --spring.config.name=application --spring.config.location=file:///opt/provenir70/script/internal-gateway/internal-gateway/application.properties
+StandardOutput=file:/var/log/provenir/Internal-Gateway-OUTPUT.log
+StandardOutput=file:/var/log/provenir/Internal-Gateway-ERROR.log
+
+[Install]
+WantedBy=multi-user.target
